@@ -16,6 +16,7 @@ import { LeaderProvider } from '../providers/leader/leader';
 import { PromotionProvider } from '../providers/promotion/promotion';
 import { HttpModule } from '@angular/http';
 import { baseURL } from '../shared/baseurl';
+import { DishdetailPage} from '../pages/dishdetail/dishdetail';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { baseURL } from '../shared/baseurl';
     HomePage,
     AboutPage,
     MenuPage,
-    ContactPage
+    ContactPage,
+    DishdetailPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { baseURL } from '../shared/baseurl';
     HomePage,
     AboutPage,
     MenuPage,
-    ContactPage
+    ContactPage,
+    DishdetailPage
   ],
   providers: [
     StatusBar,
