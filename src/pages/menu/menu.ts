@@ -27,14 +27,6 @@ export class MenuPage implements OnInit {
    @Inject('BaseURL') private BaseURL) {
    }
 
-   addToFavorites(dish: Dish) {
-    console.log('Adding to Favorites', dish.id);
-    this.favoriteservice.addFavorite(dish.id);
-    this.toastCtrl.create({
-      message: 'Dish ' + dish.id + ' added as a favorite successfully',
-      duration: 3000
-    }).present();
-  }
 
   ngOnInit() {
     this.dishservice.getDishes()
