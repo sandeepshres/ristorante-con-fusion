@@ -72,8 +72,7 @@ export class RegisterPage {
       sourceType: 0,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.PNG,
-      mediaType: this.camera.MediaType.PICTURE,
-      cameraDirection: this.camera.Direction.FRONT
+      mediaType: this.camera.MediaType.PICTURE
     }
 
     this.camera.getPicture(options).then((imageData) => {

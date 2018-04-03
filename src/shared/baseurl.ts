@@ -1,1 +1,1 @@
-export const baseURL = 'http://192.168.0.8:3000/';
+export const baseURL = 'https://myconfusionapp.herokuapp.com/';
