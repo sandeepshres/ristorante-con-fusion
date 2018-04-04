@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Comment } from '../../shared/comment';
 
@@ -10,7 +10,6 @@ import { Comment } from '../../shared/comment';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-comment',
   templateUrl: 'comment.html',
