@@ -36,10 +36,9 @@ export class FavoritesPage implements OnInit {
 
   deleteFavorite(item: ItemSliding, id: number) {
     console.log('delete', id);
-
     let alert = this.alertCtrl.create({
       title: 'Confirm Delete',
-      message: 'Do you want to delete Dish '+ id,
+      message: 'Do you want to delete Dish ' + id,
       buttons: [
         {
           text: 'Cancel',
@@ -56,11 +55,12 @@ export class FavoritesPage implements OnInit {
             });
             let toast = this.toastCtrl.create({
               message: 'Dish ' + id + ' deleted successfully',
-              duration: 3000});
+              duration: 3000
+            });
             loading.present();
             this.favoriteservice.deleteFavorite(id)
-              .subscribe(favorites => {this.favorites = favorites; loading.dismiss(); toast.present(); } ,
-                errmess =>{ this.errMess = errmess; loading.dismiss(); });
+              .subscribe(favorites => { this.favorites = favorites; loading.dismiss(); toast.present(); },
+                errmess => { this.errMess = errmess; loading.dismiss(); });
           }
         }
       ]

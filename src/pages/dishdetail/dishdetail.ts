@@ -32,20 +32,20 @@ export class DishdetailPage {
     this.favorite = favoriteservice.isFavorite(this.dish.id);
     this.numcomments = this.dish.comments.length;
     let total = 0;
-    this.dish.comments.forEach(comment => total += comment.rating );
-    this.avgstars = (total/this.numcomments).toFixed(2);
+    this.dish.comments.forEach(comment => total += comment.rating);
+    this.avgstars = (total / this.numcomments).toFixed(2);
   }
 
   openComment() {
     let modal = this.modalCtrl.create(CommentPage);
     modal.onDidDismiss(data => {
-      if(data) {
+      if (data) {
         this.com = data;
-      console.log(this.com);
-      this.dish.comments.push(this.com);
-    }
-   });
-   modal.present();
+        console.log(this.com);
+        this.dish.comments.push(this.com);
+      }
+    });
+    modal.present();
   }
 
   ionViewDidLoad() {
@@ -53,33 +53,34 @@ export class DishdetailPage {
   }
 
   addToFavorites() {
-   console.log('Adding to Favorites', this.dish.id);
-   this.favorite = this.favoriteservice.addFavorite(this.dish.id);
-   this.toastCtrl.create({
-     message: 'Dish ' + this.dish.id + ' added as favorite successfully',
-     position: 'middle',
-     duration: 3000}).present();
- }
+    console.log('Adding to Favorites', this.dish.id);
+    this.favorite = this.favoriteservice.addFavorite(this.dish.id);
+    this.toastCtrl.create({
+      message: 'Dish ' + this.dish.id + ' added as favorite successfully',
+      position: 'middle',
+      duration: 3000
+    }).present();
+  }
 
- presentActionSheet() {
-   const actionSheet = this.actionSheetCtrl.create({
-     title: 'Select Actions',
-     buttons: [
-       {
-         text: 'Add to Favorites',
-         handler: () => {
-           console.log('Added to Favorites');
-           this.addToFavorites();
-         }
-       },
-       {
-         text: 'Add Comment',
-         handler: () => {
-           console.log('Add comment clicked');
-           this.openComment();
-         }
-       },
-       {
+  presentActionSheet() {
+    const actionSheet = this.actionSheetCtrl.create({
+      title: 'Select Actions',
+      buttons: [
+        {
+          text: 'Add to Favorites',
+          handler: () => {
+            console.log('Added to Favorites');
+            this.addToFavorites();
+          }
+        },
+        {
+          text: 'Add Comment',
+          handler: () => {
+            console.log('Add comment clicked');
+            this.openComment();
+          }
+        },
+        {
           text: 'Share via Facebook',
           handler: () => {
             this.socialSharing.shareViaFacebook(this.dish.name + ' -- ' + this.dish.description, this.BaseURL + this.dish.image, '')
@@ -95,17 +96,17 @@ export class DishdetailPage {
               .catch(() => console.log('Failed to post to Twitter'));
           }
         },
-       {
-         text: 'Cancel',
-         role: 'cancel',
-         handler: () => {
-           console.log('Cancel clicked');
-         }
-       }
-     ]
-   });
-   actionSheet.present();
- }
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
 
 
 }

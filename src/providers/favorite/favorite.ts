@@ -17,47 +17,47 @@ export class FavoriteProvider {
   favorites: Array<any>;
 
   constructor(public http: Http,
-   private dishservice: DishProvider, private storage: Storage,
-   private localNotifications: LocalNotifications) {
-     console.log('Hello FavoriteProvider Provider');
-     storage.get('favorites').then(favorites => {
-        if (favorites) {
-          console.log(favorites);
-          this.favorites = favorites;
-        }
-        else {
-          this.favorites = [];
-          console.log('favorites not present');
-        }
-      });
-   }
+    private dishservice: DishProvider, private storage: Storage,
+    private localNotifications: LocalNotifications) {
+    console.log('Hello FavoriteProvider Provider');
+    storage.get('favorites').then(favorites => {
+      if (favorites) {
+        console.log(favorites);
+        this.favorites = favorites;
+      }
+      else {
+        this.favorites = [];
+        console.log('favorites not present');
+      }
+    });
+  }
 
-   addFavorite(id: number): boolean {
-     if (!this.isFavorite(id))
-       this.favorites.push(id);
-     console.log('favorites', this.favorites);
-      this.storage.set('favorites', this.favorites);
-      // Schedule a single notification
-      this.localNotifications.schedule({
-        id: id,
-        text: 'Dish ' + id + ' added as a favorite successfully'
-      });
-     return true;
-   }
+  addFavorite(id: number): boolean {
+    if (!this.isFavorite(id))
+      this.favorites.push(id);
+    console.log('favorites', this.favorites);
+    this.storage.set('favorites', this.favorites);
+    // Schedule a single notification
+    this.localNotifications.schedule({
+      id: id,
+      text: 'Dish ' + id + ' added as a favorite successfully'
+    });
+    return true;
+  }
 
-   getFavorites(): Observable<Dish[]> {
+  getFavorites(): Observable<Dish[]> {
     return this.dishservice.getDishes()
       .map(dishes => dishes.filter(dish => this.favorites.some(el => el === dish.id)));
   }
 
-   isFavorite(id: number): boolean {
-         return this.favorites.some(el => el === id);
-   }
+  isFavorite(id: number): boolean {
+    return this.favorites.some(el => el === id);
+  }
 
-   deleteFavorite(id: number): Observable<Dish[]> {
+  deleteFavorite(id: number): Observable<Dish[]> {
     let index = this.favorites.indexOf(id);
     if (index >= 0) {
-      this.favorites.splice(index,1);
+      this.favorites.splice(index, 1);
       this.storage.set('favorites', this.favorites);
       return this.getFavorites();
     }

@@ -22,20 +22,20 @@ export class MyApp {
   rootPage: any = HomePage;
   loading: any = null;
 
-  pages: Array<{title: string, icon: string, component: any}>;
+  pages: Array<{ title: string, icon: string, component: any }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-     public modalCtrl: ModalController, private loadingCtrl: LoadingController,
+    public modalCtrl: ModalController, private loadingCtrl: LoadingController,
     private network: Network) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-       { title: 'Home', icon: 'home', component: HomePage },
-       { title: 'About Us', icon: 'information-circle', component: AboutPage },
-       { title: 'Menu', icon: 'list-box', component: MenuPage },
-       { title: 'Contact Us', icon: 'contact', component: ContactPage },
-       { title: 'Favorites', icon: 'heart', component: FavoritesPage },
+      { title: 'Home', icon: 'home', component: HomePage },
+      { title: 'About Us', icon: 'information-circle', component: AboutPage },
+      { title: 'Menu', icon: 'list-box', component: MenuPage },
+      { title: 'Contact Us', icon: 'contact', component: ContactPage },
+      { title: 'Favorites', icon: 'heart', component: FavoritesPage },
     ];
 
   }
@@ -48,15 +48,15 @@ export class MyApp {
       this.splashScreen.hide();
 
       this.network.onDisconnect().subscribe(() => {
-       if (!this.loading) {
-         this.loading = this.loadingCtrl.create({
-           content: 'Network Disconnected'
-         });
-         this.loading.present();
-       }
-     });
+        if (!this.loading) {
+          this.loading = this.loadingCtrl.create({
+            content: 'Network Disconnected'
+          });
+          this.loading.present();
+        }
+      });
 
-     this.network.onConnect().subscribe(() => {
+      this.network.onConnect().subscribe(() => {
 
         // We just got a connection but we need to wait briefly
         // before we determine the connection type. Might need to wait.

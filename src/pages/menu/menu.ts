@@ -20,11 +20,11 @@ export class MenuPage implements OnInit {
   errMess: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-   private dishservice: DishProvider,
-   private favoriteservice: FavoriteProvider,
-   private toastCtrl: ToastController,
-   @Inject('BaseURL') private BaseURL) {
-   }
+    private dishservice: DishProvider,
+    private favoriteservice: FavoriteProvider,
+    private toastCtrl: ToastController,
+    @Inject('BaseURL') private BaseURL) {
+  }
 
 
   ngOnInit() {

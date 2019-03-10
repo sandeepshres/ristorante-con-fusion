@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
@@ -25,15 +25,15 @@ export class RegisterPage {
     private camera: Camera,
     private formBuilder: FormBuilder) {
 
-      this.registerForm = this.formBuilder.group({
-        firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
-        lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
-        username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)] ],
-        password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)] ],
-        telnum: ['', [Validators.required, Validators.pattern] ],
-        email: ['', [Validators.required, Validators.email] ],
-      });
-    }
+    this.registerForm = this.formBuilder.group({
+      firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
+      telnum: ['', [Validators.required, Validators.pattern]],
+      email: ['', [Validators.required, Validators.email]],
+    });
+  }
 
   dismiss() {
     this.viewCtrl.dismiss(true);
@@ -57,7 +57,7 @@ export class RegisterPage {
       this.image = imageData;
       console.log(imageData);
     }, (err) => {
-        console.log('Error obtaining picture')
+      console.log('Error obtaining picture')
     });
   }
 
@@ -78,7 +78,7 @@ export class RegisterPage {
       this.image = imageData;
       console.log(imageData);
     }, (err) => {
-        console.log('Error obtaining picture')
+      console.log('Error obtaining picture')
     });
   }
 

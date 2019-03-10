@@ -27,7 +27,7 @@ import { LeaderProvider } from '../providers/leader/leader';
 import { PromotionProvider } from '../providers/promotion/promotion';
 import { HttpModule } from '@angular/http';
 import { baseURL } from '../shared/baseurl';
-import { DishdetailPage} from '../pages/dishdetail/dishdetail';
+import { DishdetailPage } from '../pages/dishdetail/dishdetail';
 import { FavoriteProvider } from '../providers/favorite/favorite';
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -68,7 +68,7 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     DishProvider,
     ProcessHttpmsgProvider,
     LeaderProvider,
@@ -83,4 +83,4 @@ import { IonicStorageModule } from '@ionic/storage';
     CallNumber
   ]
 })
-export class AppModule {}
+export class AppModule { }

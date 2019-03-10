@@ -17,23 +17,23 @@ import 'rxjs/add/operator/catch';
 export class DishProvider {
 
   constructor(public http: Http,
-              private processHTTPMsgService: ProcessHttpmsgProvider) { }
+    private processHTTPMsgService: ProcessHttpmsgProvider) { }
 
   getDishes(): Observable<Dish[]> {
     return this.http.get(baseURL + 'dishes')
-                    .map(res => { return this.processHTTPMsgService.extractData(res); })
-                    .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .map(res => { return this.processHTTPMsgService.extractData(res); })
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
   }
 
   getDish(id: number): Observable<Dish> {
-    return  this.http.get(baseURL + 'dishes/'+ id)
-                    .map(res => { return this.processHTTPMsgService.extractData(res); })
-                    .catch(error => { return this.processHTTPMsgService.handleError(error); });
+    return this.http.get(baseURL + 'dishes/' + id)
+      .map(res => { return this.processHTTPMsgService.extractData(res); })
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
   }
 
   getFeaturedDish(): Observable<Dish> {
     return this.http.get(baseURL + 'dishes?featured=true')
-                    .map(res => { return this.processHTTPMsgService.extractData(res)[0]; })
-                    .catch(error => { return this.processHTTPMsgService.handleError(error); });
+      .map(res => { return this.processHTTPMsgService.extractData(res)[0]; })
+      .catch(error => { return this.processHTTPMsgService.handleError(error); });
   }
 }

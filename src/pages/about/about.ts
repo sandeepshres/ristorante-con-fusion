@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Leader } from '../../shared/leader';
 import { LeaderProvider } from '../../providers/leader/leader';
@@ -14,17 +14,17 @@ import { LeaderProvider } from '../../providers/leader/leader';
   selector: 'page-about',
   templateUrl: 'about.html',
 })
-export class AboutPage implements OnInit{
+export class AboutPage implements OnInit {
   leaders: Leader[];
   leaderErrMess: string;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private leaderservice: LeaderProvider,
     @Inject('BaseURL') private BaseURL) { }
 
-    ngOnInit() {
-      this.leaderservice.getLeaders()
-        .subscribe(leaders => this.leaders = leaders, errmess => this.leaderErrMess = <any>errmess);
-        }
+  ngOnInit() {
+    this.leaderservice.getLeaders()
+      .subscribe(leaders => this.leaders = leaders, errmess => this.leaderErrMess = <any>errmess);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad AboutPage');
   }
